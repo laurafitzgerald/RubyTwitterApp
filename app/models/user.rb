@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+ has_many :microposts
+
  before_save {self.email = email.downcase}
 
  validates :name, presence: true, length: {in: 4..30}
