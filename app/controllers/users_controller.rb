@@ -12,10 +12,13 @@ class UsersController < ApplicationController
  
     @user = User.new(secure_params)
     if @user.save
+      remember @user
       flash[:success] = "Welcome to the Twitter App!"	
       redirect_to @user
     else
       render 'new'
     end
   end
+
+  
 end
