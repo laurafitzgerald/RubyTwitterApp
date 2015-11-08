@@ -28,7 +28,7 @@ module SessionsHelper
 
 
   # Returns true if the given user is the current user.
-  def current_user?
+  def current_user? user
     user == current_user
 
   end
@@ -44,4 +44,11 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def logged_in_user
+    unless logged_in?
+      flash[:notice] = "Please log in"
+      redirect_to login_url
+
+    end
+  end
 end
